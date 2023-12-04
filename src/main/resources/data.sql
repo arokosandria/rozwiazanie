@@ -1,0 +1,10 @@
+INSERT INTO TASK (DONE, DUE_DATE, CATEGORY, NAME)
+VALUES (TRUE, '2023-11-01', 'zabawki', 'pokoj');
+INSERT INTO TASK (DONE, DUE_DATE, CATEGORY, NAME)
+VALUES (true, '2022-11-01', 'zabawki', 'pokoj duzy');
+INSERT INTO TASK (DONE, DUE_DATE, CATEGORY, NAME)
+VALUES (true, '2021-11-01', 'zabawki', 'pokoj maly');
+INSERT INTO TASK (DONE, DUE_DATE, CATEGORY, NAME)
+VALUES (false, '2023-11-01', 'sprzatanie', 'pokoj');
+INSERT INTO TASK (DONE, DUE_DATE, CATEGORY, NAME)
+VALUES (false, '2021-11-01', 'sprzatanie', 'pokoj duzy');
