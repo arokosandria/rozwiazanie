@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +20,10 @@ public class TasksService {
         return new ArrayList<>(tasksRepository.findByDoneTrue());
 
     }
+    public boolean getById(Long id) {
+        return tasksRepository.findById(id).isPresent();
 
+    }
     public List<Task> getCategory(String category) {
         return new ArrayList<>(tasksRepository.findByCategory(category));
 

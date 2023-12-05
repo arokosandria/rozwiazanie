@@ -17,18 +17,20 @@ public class TasksController {
 
     @PostMapping("/add")
     public String addTask(@RequestParam String name, @RequestParam String category, @RequestParam boolean done, @RequestParam String dueDate) {
-        if (name.isEmpty()||dueDate instanceof String) {
+        if (name.isEmpty() || dueDate instanceof String) {
             return "redirect:/err.html";
         }
         tasksService.create(new Task(name, category, done, LocalDate.parse(dueDate)));
         return "redirect:/index.html";
     }
 
-
     @RequestMapping("/update")
     public String update(@RequestParam Long id, @ModelAttribute Task tasks) {
-        tasksService.update(id, tasks);
-        return "redirect:/index.html";
+        if (tasksService.getById(id)) {
+            tasksService.update(id, tasks);
+            return "redirect:/index.html";
+        }
+        return "redirect:/err.html";
     }
 
     @GetMapping("/archive")
@@ -39,8 +41,11 @@ public class TasksController {
 
     @GetMapping("/change")
     public String getTrueDone(@RequestParam Long id) {
-        tasksService.updateDoneTrue(id);
-        return "redirect:/index.html";
+        if (tasksService.getById(id)) {
+            tasksService.updateDoneTrue(id);
+            return "redirect:/index.html";
+        }
+        return "redirect:/err.html";
     }
 
     @GetMapping("/category")
@@ -51,7 +56,6 @@ public class TasksController {
         model.addAttribute("allTasks", tasksService.getCategory(category));
         return "tasks.html";
     }
-
 
     @GetMapping("/actual")
     public String getAllNotDone(Model model) {
