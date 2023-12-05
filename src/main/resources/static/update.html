@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+</head>
+<body>
+
+<h2>Update Task</h2>
+
+<form action="/update" th:object="${tasks}" method="put">
+    <label for="name">Id:</label>
+    <input type="number" id="id" name="id"><br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" field="*{name}"><br>
+    <label for="category">Category:</label>
+    <input type="text" id="category" name="category" field="*{category}"><br>
+    <label for="dueDate">dueDate:</label>
+    <input type="date" id="dueDate" name="dueDate"field="*{dueDate}"><br>
+
+    <input type="submit" value="Update">
+</form>
+
+</body>
+</html>
